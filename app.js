@@ -9,10 +9,10 @@ require("dotenv").config();
   appToken: process.env.APP_TOKEN
 });*/
 const app = new App({
-    token: 'xoxb-1208966967986-3483809358053-aoKNRDcoaxW0P5XLfW6aZDL8',//process.env.SLACK_BOT_TOKEN,
+    token: process.env.SLACK_BOT_TOKEN,
     socketMode:true, // enable the following to use socket mode
-    signingSecret: 'b2b62a402e4cbc9251c95d42d6e1bf9f',//process.env.SLACK_SIGNING_SECRET,
-    appToken: 'xapp-1-A03E7FS1ZNZ-3486578176018-ee04d35e197f401d95fd3f6e2716e3e173a117f5ba1d3b49015cc6e91d162d60'//process.env.APP_TOKEN,
+    signingSecret: process.env.SLACK_SIGNING_SECRET,
+    appToken: process.env.APP_TOKEN
   });
 
 app.command("/ranking", async ({ command, ack, say }) => {
