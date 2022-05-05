@@ -16,3 +16,4 @@ lib-cov
 *.log
 *.out
 *.pid
+.env
