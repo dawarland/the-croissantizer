@@ -2,27 +2,27 @@
   "name": "the-croissantizer",
   "version": "1.0.0",
   "description": "Bot slack",
-  "main": "index.js",
+  "main": "src",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon app.js",
-    "start": "NODE_ENV=production node app.js"
+    "dev": "nodemon .",
+    "start": "NODE_ENV=production node ."
   },
+  "author": "Techno Tim",
+  "license": "ISC",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dawarland/the-croissantizer.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/dawarland/the-croissantizer/issues"
-  },
-  "homepage": "https://github.com/dawarland/the-croissantizer#readme",
+  "keywords": [
+    "slack",
+    "bot",
+    "croissant"
+  ],
   "dependencies": {
-    "@slack/bolt": "^3.11.0"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.16"
+    "@slack/rtm-api": "^5.0.5",
+    "@slack/web-api": "^5.10.0",
+    "esm": "^3.2.25",
+    "fs": "*"
   }
 }
