@@ -16,25 +16,29 @@ rtm.on('ready', async () => {
 })
 
 rtm.on('slack_event', async (eventType, event) => {
-    console.log({event})
     if (event && event.type === 'message'){
-        if (event.text.includes('!ranking')) {
+        console.log({event})
+        if (event.text.includes('!ranking') && (!(event.username) || (event.username && !(event.username.includes('Croissantizer')))  ) ) {
             getRanking(event.channel, event.user)
         }
     }
-    if(event && event.type=="desktop_notification"){
-        const victim = "@"+event.content.split(':')[0]
-        let from = "" ;
-        let day;
-        if (event.content.includes('!from')) {
-            const m = event.content.match(/\!from\(?(.+)\)/gi)
-            from = m ? m[0].split('(')[1].slice(0, -1) : "";   
+    else if(event && event.type=="desktop_notification"){
+        console.log({event})
+        // si croissantizer est identifié, c'est un croissantage !
+        if (event.content.includes('@Croissantizer') && event.content.includes(':') && event.subtitle && !(event.subtitle.includes('Croissantizer (bot)'))){
+            const victim = "@"+event.content.split(':')[0]
+            let from = "" ;
+            let day;
+            if (event.content.includes('!from')) {
+                const m = event.content.match(/\!from\(?(.+)\)/gi)
+                from = m ? m[0].split('(')[1].slice(0, -1) : "";   
+            }
+            if (event.content.includes('!day')) {
+                const m = event.content.match(/\!from\(?(.+)\)/gi)
+                day = m ? m[0].split('(')[1].slice(0, -1) : "";   
+            }
+            croissantage(event.channel, victim, from, day)
         }
-        if (event.content.includes('!day')) {
-            const m = event.content.match(/\!from\(?(.+)\)/gi)
-            day = m ? m[0].split('(')[1].slice(0, -1) : "";   
-        }
-        croissantage(event.channel, victim, from, day)
     }
 })
 
